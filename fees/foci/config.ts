@@ -4,8 +4,13 @@ export const FEE_ESCROW = "0x5a76a44B49ca0f7c4dB181f289C1eCA91d928406"; // FociF
 export const MEME_HOOK = "0xF847790B6fA5DA300BB3f56f10d743e71E98e044"; // FociMemeHook (V4 hook)
 export const POOL_MANAGER = "0x8366a39CC670B4001A1121B8F6A443A643e40951"; // Uniswap V4 PoolManager on Arc
 export const REWARDS_FACTORY = "0xdac447110867954F00638125bbd5c66D8E0a7195"; // FociRewardsDistributorFactory
-// Arc's USDC as the 6-decimal ERC-20 view token; every Foci launch is quoted in it.
+// Arc's USDC as the 6-decimal ERC-20 view token: the launch-fee asset and the first approved quote.
+// Launches may be quoted in any pair token the factory approves (WETH, XAUM, cirBTC, EURC, …), so
+// the volume adapter keys every amount by the launch's own `pairToken`.
 export const USDC = "0x3600000000000000000000000000000000000000";
+// The native-USDC quote path (pairToken 0x0, the 18-decimal ledger of the same funds as 0x3600…)
+// was never approved on mainnet; launches on it are skipped so USDC is only counted via the view token.
+export const NATIVE = "0x0000000000000000000000000000000000000000";
 export const FACTORY_START_BLOCK = 20883999; // 2026-09-14
 export const REWARDS_FACTORY_START_BLOCK = 21075146; // 2026-09-15
 export const START = "2026-09-14";
